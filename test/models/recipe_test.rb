@@ -11,6 +11,11 @@ class RecipeTest < ActiveSupport::TestCase
     assert @recipe.valid?
   end
 
+  test "recipe without chef id should be invalid" do
+    @recipe.chef_id = nil
+    assert_not @recipe.valid?
+  end
+
   test "name should be present" do
     assert @recipe.name = " "
     assert_not @recipe.valid?
