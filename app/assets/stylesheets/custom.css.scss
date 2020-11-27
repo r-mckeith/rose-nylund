@@ -26,6 +26,10 @@
   text-decoration: none;
 }
 
+.center {
+  text-align: center;
+}
+
 .description {
   margin-top: 0;
 }
@@ -40,4 +44,12 @@
 
 .chef_info {
   margin-top: 10px;
+}
+
+.btn-xlarge {
+  background-color: teal;
+}
+
+.colormatch a {
+  color: teal;
 }
