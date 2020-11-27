@@ -2,11 +2,13 @@
 <% if @recipe.errors.any? %>
   <%= pluralize(@recipe.errors.count, "error") %>
   prohibited this <%= @recipe.class %> from being saved:
-  <ul>
-    <% @recipe.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
+    <div class="panel-body">
+      <ul>
+        <% @recipe.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
 <% end %>
 
 <div class="row">
