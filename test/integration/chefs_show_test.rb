@@ -9,7 +9,12 @@ class ChefsShowTest < ActionDispatch::IntegrationTest
     @recipe2 = @chef.recipes.create(name: "Tofu Saute", description: "very tasty and good.")
   end
 
-  test "should get chef's show" do 
+  test "should get chefs index" do
+    get chefs_url
+    assert_response :success
+  end
+
+  test "should get chef's show page" do 
     get chef_path(@chef)
     assert_template 'chefs/show'
     assert_select "a[href=?]", recipe_path(@recipe), text: @recipe.name
