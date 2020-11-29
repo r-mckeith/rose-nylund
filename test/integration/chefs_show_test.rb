@@ -14,6 +14,17 @@ class ChefsShowTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should delete chef" do
+    get chefs_path
+    assert_template 'chefs/index'
+    assert_difference 'Chef.count', -1 do
+      delete chef_path(@chef)
+    end
+    assert_redirected_to chefs_path 
+    assert_not flash.empty?
+  end
+  
+
   test "should get chef's show page" do 
     get chef_path(@chef)
     assert_template 'chefs/show'
