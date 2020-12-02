@@ -53,8 +53,8 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:name, :description)
   end
 
-  def require_same_user
-    if current_chef != @recipe.chef
+  def require_same_user 
+    if current_chef != @recipe.chef and !current_chef.admin?
       flash[:danger] = "This function is not available"
       redirect_to recipes_path
     end
