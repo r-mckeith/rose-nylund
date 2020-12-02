@@ -5,6 +5,8 @@ class ChefsShowTest < ActionDispatch::IntegrationTest
   def setup
     @chef = Chef.create!(chefname: "Ryan", email: "ryan@example.com",
                          password: "password", password_confirmation: "password")
+    @admin_user = Chef.create!(chefname: "Ryan1", email: "ryan1@example.com",
+                         password: "password", password_confirmation: "password", admin: true)
     @recipe = @chef.recipes.create(name: "Vegetable saute", description: "very tasty and good.")
     @recipe2 = @chef.recipes.create(name: "Tofu Saute", description: "very tasty and good.")
   end
@@ -15,7 +17,7 @@ class ChefsShowTest < ActionDispatch::IntegrationTest
   end
 
   test "should delete chef" do
-    sign_in_as(@chef, "password")
+    sign_in_as(@admin_user, "password")
     get chefs_path
     assert_template 'chefs/index'
     assert_difference 'Chef.count', -1 do
