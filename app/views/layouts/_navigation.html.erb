@@ -23,11 +23,23 @@
             Recipes
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" <%= link_to "View recipes", recipes_path %></a>
             <a class="dropdown-item" <%= link_to "Create new recipe", new_recipe_path %></a>
-            <a class="dropdown-item" <%= link_to "View all recipes", recipes_path %></a>
           </div>
         </li>
       <% end %>
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Ingredients
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" <%= link_to "View ingredients", ingredients_path %></a>
+        <% if logged_in? && current_chef.admin? %>
+        <a class="dropdown-item" <%= link_to "Add new ingredient", new_ingredient_path %></a>
+        <% end %>
+      </div>
+    </li>
 
       <% if logged_in? %>
         <li class="nav-item dropdown">

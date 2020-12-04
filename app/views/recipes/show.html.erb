@@ -1,4 +1,5 @@
 <%= render 'shared/page_title', title: @recipe.name %>
+
 <div class="well card col-md-8 col-md-offset-2">
   <h4 class="center description"><strong>Steps: </strong></h4>
   <hr />
@@ -9,7 +10,7 @@
       <em>Created by:</em>
     </p>
     <p class="center">
-      <%= link_to gravatar_for(@recipe.chef), recipes_path %>
+      <%= link_to gravatar_for(@recipe.chef), chef_path(@recipe.chef) %>
     </p>
     <p class="center">
       <small><%= @recipe.chef.chefname.capitalize %></small>
@@ -24,4 +25,5 @@
                                    class: "btn btn-xs btn-danger" %>
     <% end %>
     <%= link_to 'Return to recipes', recipes_path, class: "btn btn-xs btn-primary" %>
-<div>
+  </div>
+</div>
