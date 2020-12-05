@@ -114,4 +114,21 @@
   margin: 0 10px 0;
 }
 
+.button {
+  padding: 10px 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  font-size: 10px;
+}
+
+.button a {
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.pull-right {
+  float: right;
+}
+
 

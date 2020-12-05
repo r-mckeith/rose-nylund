@@ -1,6 +1,7 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 
 <div class="well card col-md-8 col-md-offset-2">
+
   <h4 class="center description"><strong>Steps: </strong></h4>
   <hr />
   <%= simple_format(@recipe.description) %>
@@ -8,6 +9,7 @@
   <% if @recipe.ingredients.any? %>
     <p>Ingredients: <%= render @recipe.ingredients %></p>
   <% end %>
+
   <div class="pull-right">
     <p class="center">
       <em>Created by:</em>
@@ -20,6 +22,7 @@
       <div class="pull-right"><%= time_ago_in_words(@recipe.created_at) %> ago</div>
     </p>
   </div>
+
   <div class="recipe-actions">
     <% if logged_in? && (current_chef == @recipe.chef || current_chef.admin?) %>
       <%= link_to 'Edit recipe', edit_recipe_path(@recipe), class: "btn btn-xs btn-warning" %>
@@ -29,4 +32,22 @@
     <% end %>
     <%= link_to 'Return to recipes', recipes_path, class: "btn btn-xs btn-primary" %>
   </div>
+  
 </div>
+
+<% if @recipe.comments != 0 %>
+  <div class="row>
+    <div class="col-md-8 col-md-offset-2">
+      <h3>Comments: </h3>
+      <div id="messages">
+        <%= render partial: 'comments/comments', object: @comments %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h3>No comments yet</h3>
+    </div>
+  </div>
+<% end %>
